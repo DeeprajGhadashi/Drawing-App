@@ -11,6 +11,7 @@ window.addEventListener("load" , () => {
 
 const startDraw = () => {
     isDrawing= true;
+    ctx.beginPath(); //creating new path to draw
 }
 
 const drawing =(e) => {
@@ -23,4 +24,4 @@ const drawing =(e) => {
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
-canvas.addEventListener("mouseup", ()=> isDrawing = false);
+canvas.addEventListener("mouseup", ()=> isDrawing = false); // do not drwaing at time not hold mouse button
