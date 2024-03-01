@@ -1,14 +1,16 @@
 const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
 fillColor = document.querySelector("#fill-color"),
-sizeSlider = document.querySelector("#size-slider")
+sizeSlider = document.querySelector("#size-slider"),
+colorBtns = document.querySelectorAll(".colors .option")
 ctx = canvas.getContext("2d");
 
 //global variable with default value
 let prevMouseX, prevMouseY,snapshot,
 isDrawing = false,
 selectedTool = "brush",
-brushWidth = 5;
+brushWidth = 5,
+selectedColor = "#000";
 
 window.addEventListener("load" , () => {
     //setting canvas width/height.. offsetwidth/height returns viewable width/height of an element
@@ -79,6 +81,17 @@ toolBtns.forEach(btn => {
 });
 
 sizeSlider.addEventListener("change", () => brushWidth = sizeSlider.value); //passing slider value as brushSize
+
+colorBtns.forEach(btn => {
+    btn.addEventListener("click", () => {  // adding click event to all color button
+     //removing active class from the previous option and adding on current clicked option
+     document.querySelector(".options .selected").classList.remove("selected");
+     btn.classList.add("selected");
+     // passing selected btn background color as selectedColor value
+    selectedColor = window.getComputedStyle(btn).getPropertyValue("background-color");
+     // console.log(window.getComputedStyle(btn).getPropertyValue("background-color"));
+    });
+});
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
