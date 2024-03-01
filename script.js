@@ -1,5 +1,6 @@
 const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
+fillColor = document.querySelector("#fill-color"),
 ctx = canvas.getContext("2d");
 
 //global variable with default value
@@ -15,7 +16,11 @@ window.addEventListener("load" , () => {
 })
 
 const drawRect = (e) =>{
-   ctx.strokeRect(e.offsetX , e.offsetY, prevMouseX -  e.offsetX , prevMouseY - e.offsetY);
+    // if fillColor isn't checked deaw a rect with border else draw with background
+    if(!fillColor.checked) {
+      return ctx.strokeRect(e.offsetX , e.offsetY, prevMouseX -  e.offsetX , prevMouseY - e.offsetY);
+    }
+    ctx.fillRect(e.offsetX , e.offsetY, prevMouseX -  e.offsetX , prevMouseY - e.offsetY);
 }
 
 const startDraw = (e) => {
