@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.301" height="16.301" viewBox="0 0 16.301 16.301">
+  <!-- Background rectangle -->
+  <rect width="16.301" height="16.301" rx="2" fill="#5a6168"/>
+  <!-- Text lines -->
+  <line x1="4" y1="6" x2="12" y2="6" stroke="white" stroke-width="1"/>
+  <line x1="4" y1="9" x2="12" y2="9" stroke="white" stroke-width="1"/>
+  <line x1="4" y1="12" x2="12" y2="12" stroke="white" stroke-width="1"/>
+
+</svg>

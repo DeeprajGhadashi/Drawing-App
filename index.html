@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App JavaScript | Code with Deepraj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="app-container">
+             <h1><img src="icons/logopaintshop.png" >Canvas Paint Shop </h1>
+        </div>
+        <div class="container">    
+        <section class="tools-board">
+            <div class="row">
+                <label class="title">Text</label>
+                <ul class="options">
+                    <li class="option">
+                        <img src="icons/text-box-svgrepo-com.svg" alt="">
+                        <span>Text Box</span>
+                    </li>
+                </ul>
+                <div>
+                    <label for="font-style" class="small-label">Font Style:</label>
+                    <select id="font-style" class="small-select">
+                        <option value="normal">Normal</option>
+                        <option value="italic">Italic</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="font-weight" class="small-label">Font Weight:</label>
+                    <select id="font-weight" class="small-select"> 
+                        <option value="normal">Normal</option>
+                        <option value="bold">Bold</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="text-transform" class="small-label">Text Transform:</label>
+                    <select id="text-transform" class="small-select">
+                        <option value="none">None</option>
+                        <option value="uppercase">Uppercase</option>
+                        <option value="lowercase">Lowercase</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="text-size-dropdown" class="small-label">Text Size:</label>
+                    <select id="text-size-dropdown" class="small-select">
+                        <option value="12">8</option>
+                        <option value="12">10</option>
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="18">18</option>
+                        <option value="18">20</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+    
+                <div class="row">
+                    <lable class="title">Shopes</lable>
+                    <ul class="options">
+                        <li class="option">
+                            <img src="icons/rectangle.svg" alt="">
+                            <span> Recatangle</span>
+                        </li>
+                        <li class="option">
+                            <img src="icons/circle.svg" alt="">
+                            <span> Circle</span>
+                        </li>
+                        <li class="option">
+                            <img src="icons/triangle.svg" alt="">
+                            <span> Triangle</span>
+                        </li>
+                        <li class="option">
+                            <input type="checkbox" id="file-color">
+                            <label for="fill-color">Fill Color </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <lable class="title">Options</lable>
+                    <ul class="options">
+                        <li class="option active">
+                            <img src="icons/brush.svg" alt="">
+                            <span>Brush</span>
+                        </li>
+                        <li class="option">
+                            <img src="icons/eraser.svg" alt="">
+                            <span>Eraser</span>
+                        </li>
+                        <li class="option">
+                            <input type="range" id="size-slider">
+                        </li>
+                    </ul>
+                </div>
+                <div class="row colors">
+                    <lable class="title">Colors</lable>
+                    <ul class="options">
+                        <li class="option"></li>
+                        <li class="option"></li>
+                        <li class="option"></li>
+                        <li class="option"></li>
+                        <li class="option"></li>
+                    </ul>
+                </div>
+    
+                <div class="row buttons">
+                    <button class="clear-canvas">clear-canvas</button>
+                    <button class="save-img">Save As Image</button>
+                </div>
+        </section>
+    
+        <section class="drawing-board"></section>
+        </div>
+    </div>
+   
+</body>
+
+</html>
