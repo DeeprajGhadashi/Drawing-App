@@ -18,9 +18,15 @@ window.addEventListener("load" , () => {
 const drawRect = (e) =>{
     // if fillColor isn't checked deaw a rect with border else draw with background
     if(!fillColor.checked) {
+    // creating circle according to the mouse pointer
       return ctx.strokeRect(e.offsetX , e.offsetY, prevMouseX -  e.offsetX , prevMouseY - e.offsetY);
     }
     ctx.fillRect(e.offsetX , e.offsetY, prevMouseX -  e.offsetX , prevMouseY - e.offsetY);
+}
+
+const drawCircle =(e) => {
+   ctx.arc(prevMouseX, prevMouseY, 50 ,0 , 2 * Math.PI);
+   ctx.stroke();
 }
 
 const startDraw = (e) => {
@@ -42,8 +48,9 @@ const drawing =(e) => {
         ctx.stroke(); //drawing/filing line with color
     }else if(selectedTool === "rectangle") {
         drawRect(e);
+    }else if(selectedTool === "circle") {
+        drawCircle(e);
     }
-    
 }
 
 toolBtns.forEach(btn => {
