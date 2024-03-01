@@ -1,6 +1,7 @@
 const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
 fillColor = document.querySelector("#fill-color"),
+sizeSlider = document.querySelector("#size-slider")
 ctx = canvas.getContext("2d");
 
 //global variable with default value
@@ -32,6 +33,15 @@ const drawCircle =(e) => {
    fillColor.checked ? ctx.fill() : ctx.stroke(); // if fillColor is checked fill circle also draw border circle
 }
 
+const drawTriangle = (e) => {
+    ctx.beginPath(); // creating new path to daw Triangle
+    ctx.moveTo(prevMouseX, prevMouseY); //moving triangle to the mouse pointer
+    ctx.lineTo(e.offsetX, e.offsetY); //creating first line according to the mouse pointer
+    ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); //creating botton line of triangle
+    ctx.closePath();       // closing path of a triangle so the third line draw automatically
+    fillColor.checked ? ctx.fill() : ctx.stroke(); //if fillColor is checked fill triangle else draw border
+}
+
 const startDraw = (e) => {
     isDrawing = true;
     prevMouseX = e.offsetX;  // passing current mouseX position as prevMouseX value
@@ -53,6 +63,8 @@ const drawing =(e) => {
         drawRect(e);
     }else if(selectedTool === "circle") {
         drawCircle(e);
+    }else {
+        drawTriangle(e);  
     }
 }
 
@@ -64,7 +76,9 @@ toolBtns.forEach(btn => {
        selectedTool = btn.id;
         console.log(selectedTool);
     });
-})
+});
+
+sizeSlider.addEventListener("change", () => brushWidth = sizeSlider.value); //passing slider value as brushSize
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
