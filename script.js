@@ -50,6 +50,8 @@ const startDraw = (e) => {
     prevMouseY = e.offsetY;  // passing current mouseY position as prrevMouseY value
     ctx.beginPath(); //creating new path to draw
     ctx.lineWidth = brushWidth; // passing brushSize as line width
+    ctx.strokeStyle = selectedColor;  // passing selected Color as stroke style
+    ctx.fillStyle = selectedColor;  // passing selected Color as fill style
     // copying canvas data & passing as snapshot value.. this avoids dragging the image
     snapshot = ctx.getImageData(0 ,0 , canvas.width , canvas.height);
 
