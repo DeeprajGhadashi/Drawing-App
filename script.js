@@ -1,4 +1,5 @@
 const canvas = document.querySelector("canvas"),
+toolBtns = document.querySelectorAll(".tool"),
 ctx = canvas.getContext("2d");
 
 let isDrawing = false;
@@ -22,7 +23,11 @@ const drawing =(e) => {
     ctx.stroke(); //drawing/filing line with color
 }
 
-
+toolBtns.forEach(btn => {
+    btn.addEventListener("click", () => {  //adding click event to all option
+        console.log(btn.id);
+    });
+})
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
