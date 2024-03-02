@@ -2,7 +2,8 @@ const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
 fillColor = document.querySelector("#fill-color"),
 sizeSlider = document.querySelector("#size-slider"),
-colorBtns = document.querySelectorAll(".colors .option")
+colorBtns = document.querySelectorAll(".colors .option"),
+colorPicker = document.querySelector("#color-picker"),
 ctx = canvas.getContext("2d");
 
 //global variable with default value
@@ -60,7 +61,10 @@ const startDraw = (e) => {
 const drawing =(e) => {
     if(!isDrawing) return;  //if isDrawing is false return from here
     ctx.putImageData(snapshot, 0 , 0); // adding copied canvas data on to this canvas
-    if(selectedTool === "brush") {
+    if(selectedTool === "brush" || selectedTool === "eraser") {
+        //if selected tool is eraser then set strokeStyle to white
+        // to paint white on to the existing canvas content else set the stroke color to selected color
+        ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
         ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
         ctx.stroke(); //drawing/filing line with color
     }else if(selectedTool === "rectangle") {
@@ -94,6 +98,12 @@ colorBtns.forEach(btn => {
      // console.log(window.getComputedStyle(btn).getPropertyValue("background-color"));
     });
 });
+
+colorPicker.addEventListener("change" , ()=> {
+    //passing picked color value from color picker to last color btn background
+    colorPicker.parentElement.style.background = colorPicker.value;
+    colorPicker.parentElement.click();
+})
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
