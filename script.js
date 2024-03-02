@@ -15,10 +15,18 @@ selectedTool = "brush",
 brushWidth = 5,
 selectedColor = "#000";
 
+const setCanvasBackground = () => {
+    // setting whole canvas background to white, so the downloaded img backgroun will be white
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = selectedColor;  // setting fillstyle back to the selectedColor, it'll be the brush color
+}
+
 window.addEventListener("load" , () => {
     //setting canvas width/height.. offsetwidth/height returns viewable width/height of an element
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
+    setCanvasBackground();
 })
 
 const drawRect = (e) =>{
@@ -107,17 +115,21 @@ colorPicker.addEventListener("change" , ()=> {
     colorPicker.parentElement.click();
 });
 
-clearCanvas.addEventListener("click", ()=> {
-    ctx.clearRect(0, 0 , canvas.width, canvas.width , canvas.height); //clearing whole canvas 
+clearCanvas.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clearing the whole canvas
+    setCanvasBackground();
 });
 
-clearCanvas.addEventListener("click", ()=> {
-    const link = document.createElement("a"); // creating <a> element
-    link.download = `${Date.now()}.jpg`; // passing current date as link download value
-    link.href = canvas.toDataURL(); // passing canvasData as link href value
-    link.click();  //clicking link to download image
+saveImg.addEventListener("click", () => {
+    const link = document.createElement("a"); // Creating <a> element
+    link.download = `${Date.now()}.jpg`; // Setting download attribute with current date
+    link.href = canvas.toDataURL(); // Setting canvas data as href
+    link.click(); // Clicking the link to trigger download
 });
+
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", ()=> isDrawing = false); // do not drwaing at time not hold mouse button
+
+
