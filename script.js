@@ -15,6 +15,9 @@ selectedTool = "brush",
 brushWidth = 5,
 selectedColor = "#000";
 
+let isTexting = false;
+let textX, textY;
+
 const setCanvasBackground = () => {
     // setting whole canvas background to white, so the downloaded img backgroun will be white
     ctx.fillStyle = "#fff";
@@ -28,6 +31,19 @@ window.addEventListener("load" , () => {
     canvas.height = canvas.offsetHeight;
     setCanvasBackground();
 })
+
+const drawLine = (e) => {
+    if (!isDrawing) return; // If not drawing, return
+    ctx.putImageData(snapshot, 0, 0); // Restore previous state
+    ctx.beginPath(); // Start a new path
+    ctx.moveTo(prevMouseX, prevMouseY); // Move to the starting point
+    ctx.lineTo(e.offsetX, e.offsetY); // Draw a line to the current mouse position
+    ctx.stroke(); // Stroke the line
+};
+
+// Event listener for mouse movement to draw line
+canvas.addEventListener("mousemove", drawLine);
+
 
 const drawRect = (e) =>{
     // if fillColor isn't checked deaw a rect with border else draw with background
@@ -53,6 +69,15 @@ const drawTriangle = (e) => {
     ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); //creating botton line of triangle
     ctx.closePath();       // closing path of a triangle so the third line draw automatically
     fillColor.checked ? ctx.fill() : ctx.stroke(); //if fillColor is checked fill triangle else draw border
+}
+
+const drawText = (e) => {
+    const text = prompt("Enter your text:");
+    if (text !== null) {
+        ctx.font = "20px Arial"; // You can customize the font style here
+        ctx.fillStyle = selectedColor; // Use the selected color
+        ctx.fillText(text, textX, textY);
+    }
 }
 
 const startDraw = (e) => {
@@ -81,8 +106,12 @@ const drawing =(e) => {
         drawRect(e);
     }else if(selectedTool === "circle") {
         drawCircle(e);
-    }else {
+    }else if (selectedTool === "triangle"){
         drawTriangle(e);  
+    }else if (selectedTool === "line"){
+        drawLine(e);  
+    }else {
+        drawText(e);
     }
 }
 
@@ -127,7 +156,8 @@ saveImg.addEventListener("click", () => {
     link.click(); // Clicking the link to trigger download
 });
 
-
+// Event listener for mouse movement to draw line
+canvas.addEventListener("mousemove", drawLine);
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", ()=> isDrawing = false); // do not drwaing at time not hold mouse button
