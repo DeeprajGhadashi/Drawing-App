@@ -12,54 +12,54 @@
 <body>
     <div class="nav">
         <div class="app-container">
-             <h1> 🎨 Canvas Paint Shop 🎨</h1>
+            <h1> 🎨 Canvas Paint Shop 🎨</h1>
         </div>
-        <div class="container">    
-        <section class="tools-board">
-            <div class="row">
-                <label class="title">Text</label>
-                <ul class="options">
-                    <li class="option tool" id="text-box">
-                        <img src="icons/text-box-svgrepo-com.svg" alt="">
-                        <span>Text Box</span>
-                    </li>
-                </ul>
-                <div>
-                    <label for="font-style" class="small-label">Font Style:</label>
-                    <select id="font-style" class="small-select">
-                        <option value="normal">Normal</option>
-                        <option value="italic">Italic</option>
-                    </select>
+        <div class="container">
+            <section class="tools-board">
+                <div class="row">
+                    <label class="title">Text</label>
+                    <ul class="options">
+                        <li class="option tool" id="text-input">
+                            <img src="icons/text-box-svgrepo-com.svg" alt="">
+                            <span>Text Box</span>
+                        </li>
+                    </ul>
+                    <div>
+                        <label for="font-style" class="small-label">Font Style:</label>
+                        <select id="font-style" class="small-select">
+                            <option value="normal">Normal</option>
+                            <option value="italic">Italic</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="font-weight" class="small-label">Font Weight:</label>
+                        <select id="font-weight" class="small-select">
+                            <option value="normal">Normal</option>
+                            <option value="bold">Bold</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="text-transform" class="small-label">Text Transform:</label>
+                        <select id="text-transform" class="small-select">
+                            <option value="none">None</option>
+                            <option value="uppercase">Uppercase</option>
+                            <option value="lowercase">Lowercase</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="text-size-dropdown" class="small-label">Text Size:</label>
+                        <select id="text-size-dropdown" class="small-select">
+                            <option value="12">8</option>
+                            <option value="12">10</option>
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="18">18</option>
+                            <option value="18">20</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label for="font-weight" class="small-label">Font Weight:</label>
-                    <select id="font-weight" class="small-select"> 
-                        <option value="normal">Normal</option>
-                        <option value="bold">Bold</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="text-transform" class="small-label">Text Transform:</label>
-                    <select id="text-transform" class="small-select">
-                        <option value="none">None</option>
-                        <option value="uppercase">Uppercase</option>
-                        <option value="lowercase">Lowercase</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="text-size-dropdown" class="small-label">Text Size:</label>
-                    <select id="text-size-dropdown" class="small-select">
-                        <option value="12">8</option>
-                        <option value="12">10</option>
-                        <option value="12">12</option>
-                        <option value="14">14</option>
-                        <option value="16">16</option>
-                        <option value="18">18</option>
-                        <option value="18">20</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                </div>
-    
                 <div class="row">
                     <lable class="title">Shopes</lable>
                     <ul class="options">
@@ -93,7 +93,7 @@
                             <span>Brush</span>
                         </li>
                         <li class="option tool" id="eraser">
-                            <img src="icons/eraser.svg" alt="" >
+                            <img src="icons/eraser.svg" alt="">
                             <span>Eraser</span>
                         </li>
                         <li class="option">
@@ -113,19 +113,20 @@
                         </li>
                     </ul>
                 </div>
-    
+
                 <div class="row buttons">
                     <button class="clear-canvas">clear-canvas</button>
                     <button class="save-img">Save As Image</button>
                 </div>
-        </section>
-    
-        <section class="drawing-board">
-            <canvas></canvas>
-        </section>
+
+            </section>
+
+            <section class="drawing-board">
+                <canvas></canvas>
+            </section>
         </div>
     </div>
-   
+
 </body>
 
 </html>

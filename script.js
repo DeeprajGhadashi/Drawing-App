@@ -6,6 +6,7 @@ colorBtns = document.querySelectorAll(".colors .option"),
 colorPicker = document.querySelector("#color-picker"),
 clearCanvas = document.querySelector(".clear-canvas"),
 saveImg = document.querySelector(".save-img"),
+textInput = document.querySelector("#text-input"),
 ctx = canvas.getContext("2d");
 
 //global variable with default value
@@ -14,9 +15,6 @@ isDrawing = false,
 selectedTool = "brush",
 brushWidth = 5,
 selectedColor = "#000";
-
-let isTexting = false;
-let textX, textY;
 
 const setCanvasBackground = () => {
     // setting whole canvas background to white, so the downloaded img backgroun will be white
@@ -40,10 +38,6 @@ const drawLine = (e) => {
     ctx.lineTo(e.offsetX, e.offsetY); // Draw a line to the current mouse position
     ctx.stroke(); // Stroke the line
 };
-
-// Event listener for mouse movement to draw line
-canvas.addEventListener("mousemove", drawLine);
-
 
 const drawRect = (e) =>{
     // if fillColor isn't checked deaw a rect with border else draw with background
@@ -69,15 +63,6 @@ const drawTriangle = (e) => {
     ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); //creating botton line of triangle
     ctx.closePath();       // closing path of a triangle so the third line draw automatically
     fillColor.checked ? ctx.fill() : ctx.stroke(); //if fillColor is checked fill triangle else draw border
-}
-
-const drawText = (e) => {
-    const text = prompt("Enter your text:");
-    if (text !== null) {
-        ctx.font = "20px Arial"; // You can customize the font style here
-        ctx.fillStyle = selectedColor; // Use the selected color
-        ctx.fillText(text, textX, textY);
-    }
 }
 
 const startDraw = (e) => {
@@ -157,9 +142,13 @@ saveImg.addEventListener("click", () => {
 });
 
 // Event listener for mouse movement to draw line
-canvas.addEventListener("mousemove", drawLine);
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", ()=> isDrawing = false); // do not drwaing at time not hold mouse button
 
 
+
+
+    
+    
+    
