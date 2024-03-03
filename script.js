@@ -97,6 +97,18 @@ const drawHexagon = (e) => {
     fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the hexagon based on the fill color checkbox
 };
 
+// Drawing a diamond
+const drawDiamond = (e) => {
+    ctx.beginPath(); // Start a new path
+    const width = Math.abs(prevMouseX - e.offsetX); // Calculate the width of the diamond
+    const height = Math.abs(prevMouseY - e.offsetY); // Calculate the height of the diamond
+    ctx.moveTo(prevMouseX, prevMouseY - height / 2); // Move to the top point
+    ctx.lineTo(prevMouseX + width / 2, prevMouseY); // Draw a line to the right point
+    ctx.lineTo(prevMouseX, prevMouseY + height / 2); // Draw a line to the bottom point
+    ctx.lineTo(prevMouseX - width / 2, prevMouseY); // Draw a line to the left point
+    ctx.closePath(); // Close the path
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the diamond based on the fill color checkbox
+};
 
 const startDraw = (e) => {
     isDrawing = true;
@@ -136,6 +148,8 @@ const drawing =(e) => {
     }
     else if (selectedTool === "hexagon"){
         drawHexagon(e);  
+    }else if (selectedTool === "diamond"){
+        drawDiamond(e);  
     }else {
         drawText(e);
     }
