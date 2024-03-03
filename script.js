@@ -65,6 +65,14 @@ const drawTriangle = (e) => {
     fillColor.checked ? ctx.fill() : ctx.stroke(); //if fillColor is checked fill triangle else draw border
 }
 
+// Drawing a square
+const drawSquare = (e) => {
+    ctx.beginPath(); // Start a new path
+    const sideLength = Math.abs(e.offsetX - prevMouseX); // Calculate the side length of the square
+    ctx.rect(prevMouseX, prevMouseY, sideLength, sideLength); // Draw a square with the calculated side length
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the square based on the fill color checkbox
+};
+
 const startDraw = (e) => {
     isDrawing = true;
     prevMouseX = e.offsetX;  // passing current mouseX position as prevMouseX value
@@ -95,6 +103,9 @@ const drawing =(e) => {
         drawTriangle(e);  
     }else if (selectedTool === "line"){
         drawLine(e);  
+    }
+    else if (selectedTool === "square"){
+        drawSquare(e);  
     }else {
         drawText(e);
     }
@@ -145,6 +156,7 @@ saveImg.addEventListener("click", () => {
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", ()=> isDrawing = false); // do not drwaing at time not hold mouse button
+
 
 
 
