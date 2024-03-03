@@ -110,6 +110,19 @@ const drawDiamond = (e) => {
     fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the diamond based on the fill color checkbox
 };
 
+// Drawing a star
+const drawStar = (e) => {
+    ctx.beginPath(); // Start a new path
+    const radius = Math.sqrt(Math.pow(prevMouseX - e.offsetX, 2) + Math.pow(prevMouseY - e.offsetY, 2)); // Calculate the radius of the circumscribed circle
+    for (let i = 0; i < 10; i++) {
+        const angle = (i * Math.PI) / 5; // Calculate the angle for each point
+        const innerRadius = i % 2 === 0 ? radius * 0.4 : radius * 0.15; // Alternate between inner and outer points
+        ctx.lineTo(prevMouseX + innerRadius * Math.cos(angle), prevMouseY + innerRadius * Math.sin(angle)); // Draw lines to the points
+    }
+    ctx.closePath(); // Close the path
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the star based on the fill color checkbox
+};
+
 const startDraw = (e) => {
     isDrawing = true;
     prevMouseX = e.offsetX;  // passing current mouseX position as prevMouseX value
@@ -150,6 +163,8 @@ const drawing =(e) => {
         drawHexagon(e);  
     }else if (selectedTool === "diamond"){
         drawDiamond(e);  
+    }else if (selectedTool === "star"){
+        drawStar(e);  
     }else {
         drawText(e);
     }
