@@ -85,6 +85,19 @@ const drawPentagon = (e) => {
     fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the pentagon based on the fill color checkbox
 };
 
+// Drawing a hexagon
+const drawHexagon = (e) => {
+    ctx.beginPath(); // Start a new path
+    const radius = Math.sqrt(Math.pow(prevMouseX - e.offsetX, 2) + Math.pow(prevMouseY - e.offsetY, 2)); // Calculate the radius of the circumscribed circle
+    ctx.moveTo(prevMouseX + radius * Math.cos(0), prevMouseY + radius * Math.sin(0)); // Move to the initial point
+    for (let i = 1; i <= 6; i++) {
+        ctx.lineTo(prevMouseX + radius * Math.cos((i * 2 * Math.PI) / 6), prevMouseY + radius * Math.sin((i * 2 * Math.PI) / 6)); // Draw lines to other points to form a hexagon
+    }
+    ctx.closePath(); // Close the path
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // Fill or stroke the hexagon based on the fill color checkbox
+};
+
+
 const startDraw = (e) => {
     isDrawing = true;
     prevMouseX = e.offsetX;  // passing current mouseX position as prevMouseX value
@@ -120,6 +133,9 @@ const drawing =(e) => {
         drawSquare(e);  
     }else if (selectedTool === "pentagon"){
         drawPentagon(e);  
+    }
+    else if (selectedTool === "hexagon"){
+        drawHexagon(e);  
     }else {
         drawText(e);
     }
