@@ -19,9 +19,10 @@ Open the index.html file in your web browser.
 Start drawing! Select a shape, choose a color, and let your creativity flow.
 
 Deployed Version
-Check out the deployed version of the Drawing App [here](https://drawing-app-peach.vercel.app/)https://drawing-app-peach.vercel.app/
+Check out the deployed version of the Drawing App https://drawing-app-peach.vercel.app/
 
 Demo Video
 ![image](https://github.com/DeeprajGhadashi/Drawing-App/assets/129051845/56e451c2-90f1-4fee-aff6-1a17c426c50a)
+
 ![1709531539449](https://github.com/DeeprajGhadashi/Drawing-App/assets/129051845/9a796134-2afa-4ebd-9c8b-9807c62a3a1c)
 
